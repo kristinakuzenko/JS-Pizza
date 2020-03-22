@@ -2,6 +2,7 @@
 @mainColor:rgb(255, 136, 0);
 @pad: 20px;
 @font:10px;
+@marg:5%;
 @import "pizza/pizza-card";
 
 .list{
@@ -24,16 +25,20 @@ img{
     max-height: 100px;
 }
 }
-.side-crop { max-width: 50px; overflow: hidden; }
+.side-crop {
+     max-width: 50px; 
+     overflow: hidden; 
+    }
 
 .smallb {
     background-color: @mainColor;
     color: white;
-    padding: 3px 5px 3px 5px;
+    padding: 1px 6px 2px 6px;
     text-align: center;
     margin: 4px 4px;
-    border-radius: 1000px;
+    border-radius: 100px;
 }
+
 .opacity{
     padding: @pad;
 background:rgba(0,0,0,0.75) ;
@@ -49,7 +54,7 @@ span{
 .bt{
     display: flex;
 flex-direction: row;
-justify-content: space-between;
+justify-content: start;
 }
 
 .pizza{
@@ -89,13 +94,16 @@ justify-content: space-between;
     padding: 2px 6px 2px 4px;
 }
 .green{
+    padding: 2px 4px 1px 5px;
     background-color: rgb(21, 172, 46);
     
 }
 .red{
+    padding: 2px 5px 1px 4px;
 background-color: red;
 }
 .cross{
+    padding: 3px 6px 3px 6px;
     background-color: @col;
     border-color: darken(@col, 20%);
 }
@@ -142,9 +150,44 @@ background-color: red;
 .backgr{
     background-color:#fff2e6;
 }
+.pizzaback{
+    background-color:@mainColor ;
+}
 .button{
     margin: 4px 20px 4px 20px;
     width:260px;
 }
-
-  
+.padi{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.pizzapad{
+    padding-left: @marg;
+    padding-right: @marg;
+}
+.badge{
+    border-radius: 0px;
+    background-color:@mainColor ;
+    width: 50px;
+    height: 60px;
+    text-align: center;
+    text-decoration: white;
+}
+.triangleL {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 25px 0 0;
+    border-color: @mainColor transparent transparent transparent;
+}
+.triangleR {
+    margin-left: 0px;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 25px 5px 0;
+        border-color: transparent @mainColor transparent transparent;
+    
+}
