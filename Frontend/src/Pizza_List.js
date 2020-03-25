@@ -26,8 +26,8 @@ var pizza_info = [{
             size: 40,
             price: 169
         },
-        // is_new: true,
-        // is_popular: true
+        is_new: true,
+        is_popular: true
 
     },
     {
@@ -54,7 +54,7 @@ var pizza_info = [{
         },
         is_small: true,
         is_big: true,
-        //is_popular: true
+        is_popular: true
 
     },
     {

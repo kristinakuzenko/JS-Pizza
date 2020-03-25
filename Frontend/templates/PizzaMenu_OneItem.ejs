@@ -22,9 +22,9 @@ function getIngredientsArray(pizza) {
             <img class="pizza-icon" src="<%= pizza.icon %>" alt="Pizza">
 
             <% if(pizza.is_new) { %>
-                <span class="label label-danger">Нова</span>
+                <span class="label label-danger floating-badge">Нова</span>
                 <% } else if(pizza.is_popular) {%>
-                    <span class="label label-success">Популярна</span>
+                    <span class="label label-success floating-badge">Популярна</span>
                     <% } %>
 
 

@@ -59,8 +59,8 @@ var pizza_info = [{
             size: 40,
             price: 169
         },
-        // is_new: true,
-        // is_popular: true
+        is_new: true,
+        is_popular: true
 
     },
     {
@@ -87,7 +87,7 @@ var pizza_info = [{
         },
         is_small: true,
         is_big: true,
-        //is_popular: true
+        is_popular: true
 
     },
     {
@@ -246,10 +246,10 @@ module.exports = pizza_info;
 var ejs = require('ejs');
 
 
-exports.PizzaMenu_OneItem = ejs.compile("<%\n\nfunction getIngredientsArray(pizza) {\n    //Отримує вміст піци\n    var content = pizza.content;\n    var result = [];\n\n    //Object.keys повертає масив ключів в об’єкті JavaScript\n\n    Object.keys(content).forEach(function(key){\n\n        //a.concat(b) створює спільний масив із масивів a та b\n        result = result.concat(content[key]);\n    });\n\n    return result;\n}\n\n   %>\n    <div class=\"col-sm-12 col-md-6 col-lg-4\">\n        <div class=\"thumbnail pizza-card\">\n            <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n\n            <% if(pizza.is_new) { %>\n                <span class=\"label label-danger\">Нова</span>\n                <% } else if(pizza.is_popular) {%>\n                    <span class=\"label label-success\">Популярна</span>\n                    <% } %>\n\n\n                        <div class=\"caption row margin\">\n                            <h3>\n                                <%= pizza.title %>\n                            </h3>\n                            <p style=\"color: rgb(223, 215, 215);\">\n                                <%= pizza.type %>\n                            </p>\n                            <p class=\"descr\">\n                                <%= getIngredientsArray(pizza).join(\", \") %>\n                            </p>\n                            <div class=\"left \">\n                                <span>∅   <%= pizza.small_size.size %></span>\n                                <span> &#9878; <%= pizza.small_size.weight %></span>\n                                <span class=\"font\"> <%= pizza.small_size.price %></span>\n                                <span>грн.</span>\n\n                                <a id=\"buy-small\" href=\"#\" class=\"btn btn-warning \">Купити</a>\n                            </div>\n                            <div class=\"right\">\n                                <span>∅  <%= pizza.big_size.size %>\n                                    </span>\n                                <span>&#9878;<%= pizza.big_size.weight %></span>\n                                <span class=\"font\"><%= pizza.big_size.price %></span>\n                                <span>грн.</span>\n                                <a id=\"buy-big\" href=\"#\" class=\"btn btn-warning\">Купити</a>\n                            </div>\n                        </div>\n        </div>\n    </div>");
+exports.PizzaMenu_OneItem = ejs.compile("<%\n\nfunction getIngredientsArray(pizza) {\n    //Отримує вміст піци\n    var content = pizza.content;\n    var result = [];\n\n    //Object.keys повертає масив ключів в об’єкті JavaScript\n\n    Object.keys(content).forEach(function(key){\n\n        //a.concat(b) створює спільний масив із масивів a та b\n        result = result.concat(content[key]);\n    });\n\n    return result;\n}\n\n   %>\n    <div class=\"col-sm-12 col-md-6 col-lg-4\">\n        <div class=\"thumbnail pizza-card\">\n            <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n\n            <% if(pizza.is_new) { %>\n                <span class=\"label label-danger floating-badge\">Нова</span>\n                <% } else if(pizza.is_popular) {%>\n                    <span class=\"label label-success floating-badge\">Популярна</span>\n                    <% } %>\n\n\n                        <div class=\"caption row margin\">\n                            <h3>\n                                <%= pizza.title %>\n                            </h3>\n                            <p style=\"color: rgb(223, 215, 215);\">\n                                <%= pizza.type %>\n                            </p>\n                            <p class=\"descr\">\n                                <%= getIngredientsArray(pizza).join(\", \") %>\n                            </p>\n                            <div class=\"left \">\n                                <span>∅   <%= pizza.small_size.size %></span>\n                                <span> &#9878; <%= pizza.small_size.weight %></span>\n                                <span class=\"font\"> <%= pizza.small_size.price %></span>\n                                <span>грн.</span>\n\n                                <a id=\"buy-small\" href=\"#\" class=\"btn btn-warning \">Купити</a>\n                            </div>\n                            <div class=\"right\">\n                                <span>∅  <%= pizza.big_size.size %>\n                                    </span>\n                                <span>&#9878;<%= pizza.big_size.weight %></span>\n                                <span class=\"font\"><%= pizza.big_size.price %></span>\n                                <span>грн.</span>\n                                <a id=\"buy-big\" href=\"#\" class=\"btn btn-warning\">Купити</a>\n                            </div>\n                        </div>\n        </div>\n    </div>");
 
-exports.PizzaCart_OneItem = ejs.compile("<div class=\"pizzas\">\n    <div>\n        <div style=\"float: left;\">\n\n            <% if(size==\"big_size\") { %>\n                <h>\n                    <%= pizza.title %> (Велика)\n                </h>\n                <% } else {%>\n                    <h>\n                        <%= pizza.title %> (Мала)\n                    </h>\n                    <% } %>\n\n                        <p>\n                            <span>∅ <%= pizza[size].size %></span>\n                            <span> &#9878; <%= pizza[size].weight %></span>\n                        </p>\n                        <div>\n                            <div>\n                                <span class=\"res\"><%= pizza[size].price %> грн</span>\n                                <button id=\"minus\" class=\"smallb red\"><span class=\"glyphicon glyphicon-minus\"></span></button>\n                                <span><%= quantity %></span>\n                                <button id=\"plus\" class=\"smallb green\"><span class=\"glyphicon glyphicon-plus\"></span></button>\n                                <button id=\"cross\" class=\"smallb cross\"><span class=\" color glyphicon glyphicon-remove\" ></span></button>\n                            </div>\n                        </div>\n        </div>\n        <div class=\"side-crop\">\n            <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n        </div>\n    </div>\n</div>");
-exports.PizzaType = ejs.compile("<span>\n    <span>\n        <span id=\"ptype\" class=\"btn\"> <%= pizza_type.title %>\n        </span>\n</span>\n</span>");
+exports.PizzaCart_OneItem = ejs.compile("<div class=\"pizzas\">\n    <div>\n        <div style=\"float: left;\">\n\n            <% if(size==\"big_size\") { %>\n                <h>\n                    <%= pizza.title %> (Велика)\n                </h>\n                <% } else {%>\n                    <h>\n                        <%= pizza.title %> (Мала)\n                    </h>\n                    <% } %>\n\n                        <p>\n                            <span>∅ <%= pizza[size].size %></span>\n                            <span> &#9878; <%= pizza[size].weight %></span>\n                        </p>\n                        <div>\n                            <div>\n                                <span class=\"res\"><%= pizza[size].price %> грн</span>\n                                <button id=\"minus\" class=\"smallb red\"><span class=\"glyphicon glyphicon-minus\"></span></button>\n                                <span><%= quantity %></span>\n                                <button id=\"plus\" class=\"smallb green\"><span class=\"glyphicon glyphicon-plus\"></span></button>\n                                <button id=\"cross\" class=\"smallb cross\"><span class=\" color glyphicon glyphicon-remove\" ></span></button>\n                            </div>\n                        </div>\n        </div>\n        <div class=\"side-crop\">\n            <img src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n        </div>\n    </div>\n</div>");
+exports.PizzaType = ejs.compile("<span>\n    <span>\n        <span id=\"ptype\" class=\"btn top-menu-button \"> <%= pizza_type.title %>\n        </span>\n</span>\n</span>");
 },{"ejs":8}],4:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
@@ -437,8 +437,12 @@ function showPizzaFilter(list) {
     function showOneFilter(pf1) {
         var html_code = Templates.PizzaType({ pizza_type: pf1 });
         var $node = $(html_code);
-
+        if (pf1.id == 1) {
+            $node.find("#ptype").addClass("active")
+        }
         $node.find("#ptype").click(function() {
+            $(".top-menu-button").removeClass("active");
+            $node.find("#ptype").addClass("active");
             filterPizza(pf1);
         });
         $pizza_filter.append($node);

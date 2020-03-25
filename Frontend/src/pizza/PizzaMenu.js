@@ -39,8 +39,12 @@ function showPizzaFilter(list) {
     function showOneFilter(pf1) {
         var html_code = Templates.PizzaType({ pizza_type: pf1 });
         var $node = $(html_code);
-
+        if (pf1.id == 1) {
+            $node.find("#ptype").addClass("active")
+        }
         $node.find("#ptype").click(function() {
+            $(".top-menu-button").removeClass("active");
+            $node.find("#ptype").addClass("active");
             filterPizza(pf1);
         });
         $pizza_filter.append($node);
