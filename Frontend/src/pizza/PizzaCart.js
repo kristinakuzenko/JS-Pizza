@@ -39,6 +39,9 @@ function removeFromCart(cart_item) {
 }
 
 function initialiseCart() {
+    $("#clear").click(function() {
+        clearCart();
+    });
     //Фукнція віпрацьвуватиме при завантаженні сторінки
     //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
     //TODO: ...
@@ -60,16 +63,10 @@ function clearCart() {
     updateCart();
 
 }
-$("#clear").click(function() {
-    clearCart();
-});
+
 
 function updateCart() {
     window.localStorage.setItem('cartArray', JSON.stringify(Cart));
-    //Функція викликається при зміні вмісту кошика
-    //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
-
-    //Очищаємо старі піци в кошику
     $cart.html("");
     var qty = 0;
     //Онволення однієї піци

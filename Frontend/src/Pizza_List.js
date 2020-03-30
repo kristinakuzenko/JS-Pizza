@@ -26,6 +26,9 @@ var pizza_info = [{
             size: 40,
             price: 169
         },
+
+        is_small: true,
+        is_big: true,
         is_new: true,
         is_popular: true
 
@@ -123,11 +126,7 @@ var pizza_info = [{
             size: 30,
             price: 89
         },
-        big_size: {
-            weight: 840,
-            size: 40,
-            price: 199
-        },
+        is_only_small: true,
         is_small: true
     },
     {
@@ -167,16 +166,12 @@ var pizza_info = [{
             cheese: ['сир моцарелла'],
             additional: ['оливкова олія', 'вершки']
         },
-        small_size: {
-            weight: 470,
-            size: 30,
-            price: 115
-        },
         big_size: {
             weight: 845,
             size: 40,
             price: 399
         },
+        is_only_big: true,
         is_big: true
     },
     {

@@ -38,21 +38,28 @@ function getIngredientsArray(pizza) {
                             <p class="descr">
                                 <%= getIngredientsArray(pizza).join(", ") %>
                             </p>
-                            <div class="left ">
-                                <span>∅   <%= pizza.small_size.size %></span>
-                                <span> &#9878; <%= pizza.small_size.weight %></span>
-                                <span class="font"> <%= pizza.small_size.price %></span>
-                                <span>грн.</span>
+                            <div>
+                                <% if(pizza.is_small) { %>
+                                    <div class="left ">
+                                        <span>∅   <%= pizza.small_size.size %></span>
+                                        <span> &#9878; <%= pizza.small_size.weight %></span>
+                                        <span class="font"> <%= pizza.small_size.price %></span>
+                                        <span>грн.</span>
 
-                                <a id="buy-small" href="#" class="btn btn-warning ">Купити</a>
-                            </div>
-                            <div class="right">
-                                <span>∅  <%= pizza.big_size.size %>
-                                    </span>
-                                <span>&#9878;<%= pizza.big_size.weight %></span>
-                                <span class="font"><%= pizza.big_size.price %></span>
-                                <span>грн.</span>
-                                <a id="buy-big" href="#" class="btn btn-warning">Купити</a>
+                                        <a id="buy-small" href="#" class="btn btn-warning ">Купити</a>
+                                    </div>
+                                    <% } %>
+                                        <% if(pizza.is_big) { %>
+                                            <div class="right">
+                                                <span>∅  <%= pizza.big_size.size %> </span>
+                                                <span>&#9878;<%= pizza.big_size.weight %></span>
+                                                <span class="font"><%= pizza.big_size.price %></span>
+                                                <span>грн.</span>
+                                                <a id="buy-big" href="#" class="btn btn-warning">Купити</a>
+                                            </div>
+                                            <% } %>
+
+
                             </div>
                         </div>
         </div>

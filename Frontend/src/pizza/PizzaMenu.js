@@ -80,8 +80,5 @@ function initialiseMenu() {
     showPizzaFilter(Pizza_Filter),
         showPizzaList(Pizza_List)
 }
-$("#enter").click(function() {
-
-});
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
