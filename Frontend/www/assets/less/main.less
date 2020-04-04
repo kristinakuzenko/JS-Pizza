@@ -4,7 +4,16 @@
 @font:10px;
 @marg:5%;
 @import "pizza/pizza-card";
+html, body {
+    min-width: 628px;
 
+    @media only screen and (max-width: 750px) {
+        .col-sm-6 {
+            width: 50%;
+            float:left;
+        }    
+    }
+}
 .list{
     span{
         color:lighten(@mainColor,	20%);
@@ -14,6 +23,8 @@ padding: 5px;
     }
 }
 .order{
+    top: -60px;
+z-index: 101;
 h1{
  font-size: @pad; 
  span{
@@ -101,10 +112,36 @@ justify-content: start;
 .right{
     margin-right: 20px;
    float: right;
+   &:only-child{
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span,a{
+        float: none;
+        clear: both;
+        display: inline ;
+    }
+}
 }
 .left{
     margin-left: 20px;
     float: left;
+    &:only-child{
+        float: none;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span,a{
+            float: none;
+            clear: both;
+            display: inline ;
+        }
+    }
 }
 .pa{
     padding: 2px 6px 2px 4px;
@@ -301,4 +338,27 @@ main {
       background: @mainColor;
    }
   }
+.clears{
+    z-index: 9999;
+}
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    background-color: white;
+    }
+    .bs-callout-warning {
+        border-left-color: #f0ad4e;
+        }
+  
+                
+
+
+
+
+
+  
+
   

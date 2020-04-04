@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pizza</title>
+
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+    <script>
+        document.write("<link rel='stylesheet' type='text/css' href='assets/css/main.css?v=" + Date.now() + "' />");
+    </script>
+    <!-- LESS основний файл -->
+    <!-- <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />  -->
+    <!-- LESS JavaScript компілятор -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js" data-poll="0"></script> -->
+
+
+</head>
+
+<body>
+    <main>
+        <% include common/header.ejs %>
+            <div class="container">
+                <div class=" row">
+                    <div class="backgr col-4 col-sm-6 col-md-8 col-lg-9 padi">
+                        <div style="margin-top: 10px;" class="contact-form-1">
+                            <div class="form-description">
+                                1. Контактні дані
+                            </div>
+                            <form class="form-horizontal">
+                                <div class="form-group name-group">
+                                    <label class="col-sm-2 control-label">Ім’я</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" id="inputName" name="inputName" placeholder="Ім’я Прізвище">
+                                    </div>
+                                    <span class="help-block" style="display:none">
+                                        Введіть тільки власне ім’я, без цифр
+                                        </span>
+                                </div>
+                                <div class="form-group phone-group">
+                                    <label class="col-sm-2 control-label">Телефон</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" id="inputPhone" name="inputPhone" placeholder="+380994010999">
+                                    </div>
+                                    <span class="help-block" style="display:none">
+                                        Введіть номер телефону у форматі +380 або почніть з 0
+                                        </span>
+                                </div>
+                                <div class="form-group address-group">
+                                    <label class="col-sm-2 control-label">Адреса</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" id="inputAddress" name="inputAddress" placeholder="Київ, вул. Спаська, 2">
+                                    </div>
+                                    <span class="help-block" style="display:none">
+                                        Введіть адресу доставки піци
+                                        </span>
+                                </div>
+                            </form>
+                            <div class="bs-callout bs-callout-warning">
+                                <h4>Інформація про замовлення</h4>
+                                <p>
+                                    <b>Приблизний час доставки: </b>
+                                    <b class="order-time">невідомий</b>
+                                </p>
+                                <p>
+                                    <b>Адреса доставки: </b>
+                                    <b class="order-address font-weight-light">невідома</b>
+                                </p>
+                            </div>
+
+                            <div class="col-md-5 time-address-info">
+
+                            </div>
+                            <div>
+                                <div class="form-group next-step-wrap">
+                                    <a id="forward" class="btn btn-warning" style="float: right">Далі <span
+                                    class="glyphicon glyphicon-menu-right" ></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <% include common/footer.ejs %>
+                    </div>
+                    <div class="order col-8 col-sm-6 col-md-4 col-lg-3 ">
+                        <div class="fixed-top affix ">
+                            <div id="node" class="bt bot ">
+                                <h1>Замовлення <span id="pizza_qty" class="smallb">0</span> </h1>
+                            </div>
+                            <div class="pizzas-list">
+                                <div id="cart2"></div>
+                            </div>
+                            <div style=" background-color: white;">
+                                <div style=" height: 30%;" class="font2">
+                                    <span>Сума замовлення</span>
+                                    <span style="float: right;">&ensp;грн</span>
+                                    <span id="money" style="float: right;">0 </span>
+
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <a href="index.html" class="btn light-grey btn-default button">Редагувати замовлення</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <!-- jQuery JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+    </script>
+
+    <!--Bootsrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!--Own JavaScript -->
+    <script>
+        document.write("<script type='text/javascript' src='assets/js/order.js?v=" + Date.now() + "'><\/script>");
+    </script>
+
+</body>
+
+</html>

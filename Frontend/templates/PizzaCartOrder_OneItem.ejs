@@ -1,0 +1,37 @@
+<div class="pizzas">
+    <div>
+        <div style="float: left;">
+
+            <% if(size=="big_size") { %>
+                <h>
+                    <%= pizza.title %> (Велика)
+                </h>
+                <% } else {%>
+                    <h>
+                        <%= pizza.title %> (Мала)
+                    </h>
+                    <% } %>
+
+                        <p>
+                            <span>∅ <%= pizza[size].size %></span>
+                            <span> &#9878; <%= pizza[size].weight %></span>
+                        </p>
+                        <div>
+                            <div>
+                                <span class="res"><%= pizza[size].price %> грн</span>
+
+
+                                <% if(quantity==1) { %>
+                                    <span><%= quantity %> піца</span>
+                                    <% } else {%>
+                                        <span><%= quantity %> піци</span>
+                                        <% } %>
+                            </div>
+                        </div>
+        </div>
+        <div class="side-crop">
+            <img src="<%= pizza.icon %>" alt="Pizza">
+        </div>
+    </div>
+</div>
+<div class="line-cart"></div>

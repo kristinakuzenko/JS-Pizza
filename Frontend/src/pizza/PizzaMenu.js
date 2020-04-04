@@ -5,6 +5,7 @@ var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
 var Pizza_List = require('../Pizza_List');
 var Pizza_Filter = require('../Pizza_Filter');
+var api = require('../API');
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
 var $pizza_filter = $("#pizza_filter");
@@ -78,7 +79,17 @@ function filterPizza(filter) {
 function initialiseMenu() {
     //Показуємо усі піци
     showPizzaFilter(Pizza_Filter),
-        showPizzaList(Pizza_List)
+        //showPizzaList(Pizza_List)
+
+        api.getPizzaList(function(err, pizzalist) {
+            if (err) {
+                //Обробляємо помилку,	якщо можемо або повертаємо її
+                //return	callback(err);
+            }
+            showPizzaList(pizzalist)
+        });
 }
+
+
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
