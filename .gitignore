@@ -3,3 +3,4 @@ node_modules/
 package-lock.json
 package.json
 Frontend/www/assets/js/apiKey.js
+.DS_Store 
