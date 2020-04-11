@@ -80,7 +80,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'browserify:pizza',
         'browserify:order',
-        'less',
+        'less'
         //Інші завдання які необхідно виконати
     ]);
 

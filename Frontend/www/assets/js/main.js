@@ -1699,7 +1699,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/ejs/-/ejs-2.7.4.tgz",
   "_shasum": "48661287573dcc53e366c7a1ae52c3a120eec9ba",
   "_spec": "ejs@^2.4.1",
-  "_where": "/Users/mba/Downloads/Projects/JS-Pizza",
+  "_where": "/Users/admin/Projects/JS-Pizza",
   "author": {
     "name": "Matthew Eernisse",
     "email": "mde@fleegix.org",
