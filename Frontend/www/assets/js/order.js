@@ -53,16 +53,12 @@ exports.PizzaCart_OneItem = ejs.compile("<div class=\"pizzas\">\n    <div>\n    
 exports.PizzaType = ejs.compile("<span>\n    <span>\n        <span id=\"ptype\" class=\"btn top-menu-button \"> <%= pizza_type.title %>\n        </span>\n</span>\n</span>");
 },{"ejs":5}],3:[function(require,module,exports){
 var Templates = require('./Templates');
-//Перелік розмірів піци
-var PizzaSize = {
-    Big: "big_size",
-    Small: "small_size"
 
-};
 var map;
 var point;
 var directionsDisplay;
 var newMarker;
+var sum;
 var api = require('./API');
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
@@ -101,6 +97,7 @@ function updateCart() {
 
     Cart.forEach(showOnePizzaInCart);
     $("#money").text(orderSum());
+    sum=orderSum();
     $('#pizza_qty').text(Cart.length);
 }
 
@@ -157,33 +154,83 @@ function checkAddress(){
     });
 }
 $(document).keyup(function(event) {
-    if ($("#inputPhone").is(":focus") && event.key == "Enter") {
-        checkPhone();
-    }
+    if ($("#inputPhone").is(":focus") ) {
+        $("#inputPhone").mouseout(function(event) {
+            checkPhone();
+        })
+    };
 
-    if ($("#inputName").is(":focus") && event.key == "Enter") {
-        checkWord();
+    if ($("#inputName").is(":focus") ) {
+        $("#inputName").mouseout(function(event) {
+            checkWord();
+        })
+    };      
+    if ($("#inputAddress").is(":focus")) {
+        $("#inputAddress").mouseout(function(event) {
+            checkAddress();
+        })
     }
-    if ($("#inputAddress").is(":focus") && event.key == "Enter") {
-        checkAddress();
+});
+function check(){
+    if ($("#inputName").val()==null ||$("#inputName").val()==""){
+        $(".name-group").removeClass("has-success").addClass("has-error");
+        $(".name-group").find(".help-block").css("display", "inline-block");
+        return false;
     }
+    if ($("#inputAddress").val()==null ||$("#inputAddress").val()==""){
+        $(".address-group").removeClass("has-success").addClass("has-error");
+        $(".address-group").find(".help-block").css("display", "inline-block");
+        return false;
+    }
+    if ($("#inputPhone").val()==null ||$("#inputPhone").val()==""){
+        $(".phone-group").removeClass("has-success").addClass("has-error");
+        $(".phone-group").find(".help-block").css("display", "inline-block");
+        return false;
+    }
+    return true;
+}
+var pizzaInCart="";
+Cart.forEach(function(pizza) {
+    pizzaInCart+="* "+pizza.pizza.title+" ( "+(pizza.size==='big_size'?"Велика":"Мала")+") "+pizza.quantity+" шт\n"
 });
 
 $("#forward").click(function() {
-    if (checkWord() && checkPhone()&&checkAddress()) {
-        api.createOrder({
+   if(check()){
+    var liq;
+    var order_info = {
+        name: $("#inputName").val(),
+        phone: $("#inputPhone").val(),
+        address: $("#inputAddress").val(),
+        pizza:pizzaInCart,
+        cost: sum
+    };
+    api.createOrder(order_info, function(err, data) {
+        console.log(data);              
+                LiqPayCheckout.init({
+                    data:	data.data,
+                    signature:	data.signature,
+                    embedTo:	"#liqpay",
+                    mode:	"popup"	//	embed	||	popup
+                    }).on("liqpay.callback",	function(data){
+                    console.log(data.status);
+                    console.log(data);
+                    liq=data.result==="success";
+                    }).on("liqpay.ready",	function(data){
+                    //	ready
+                    }).on("liqpay.close",	function(data){
+                        if(suc) {
+                            alert("Success");
 
-            name: $("#inputName").val(),
-            phone: $("#inputPhone").val(),
-            address: $("#inputAddress").val(),
-            order: Cart
-
-        }, function(err, data) {
-            if (err) {}
-        });
-
-    }
+                        }else{
+                            alert("Not success");
+                        }
+                    //	close
+                    });
+    });
+   } 
 });
+
+//google maps
 function initialize()	{
     directionsDisplay = new google.maps.DirectionsRenderer();
     //Тут починаємо працювати з картою
@@ -203,7 +250,6 @@ icon:"assets/images/map-icon.png"
 });
 
 function	geocodeLatLng(latlng,	 callback){
-        //Модуль за роботу з адресою
         var geocoder	=	new	google.maps.Geocoder();
         geocoder.geocode({'location':	latlng},	function(results,	status)	{
         if	(status	===	google.maps.GeocoderStatus.OK&&	results[1])	{
